@@ -18,25 +18,29 @@ class ArchiveMenu : Menu() {
     fun arсhiveAdd() {
         println("Введите название")
         val archiveName = Scanner(System.`in`).nextLine()
-        archiveMenu.add(archiveMenu.size, Archive(archiveName, mutableListOf()))
-    }
-
-    //добавил отсылку к списку заметок определенного архива
-    fun menuWorkerArhives(): MutableList<Notes> {
-        while (true) {
-            ShowMenu(archiveMenu)
-            //доработна проверка ввода
-            val choise = choiseInput(archiveMenu.size)
-
-            when (choise) {
-                0 -> arсhiveAdd()
-                1 -> {
-                    println("\nДо новых встреч!")
-                    System.exit(0)
-                }
-
-                else -> notesMenu.menuWorkerNotes()
-            }
+        if (archiveName == "") {
+            println("Ошибка: пустой ввод")
+        } else {
+            archiveMenu.add(archiveMenu.size, Archive(archiveName, mutableListOf()))
         }
     }
+
+//добавил отсылку к списку заметок определенного архива
+fun menuWorkerArhives(): MutableList<Notes> {
+    while (true) {
+        ShowMenu(archiveMenu)
+        //доработна проверка ввода
+        val choise = choiseInput(archiveMenu.size)
+
+        when (choise) {
+            0 -> arсhiveAdd()
+            1 -> {
+                println("\nДо новых встреч!")
+                System.exit(0)
+            }
+
+            else -> notesMenu.menuWorkerNotes()
+        }
+    }
+}
 }

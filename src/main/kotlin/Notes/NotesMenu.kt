@@ -14,9 +14,19 @@ class NotesMenu : Menu() {
     fun noteAdd() {
         println("\nВведите название")
         val noteName = Scanner(System.`in`).nextLine()
-        println("Введите текст")
-        val noteText = Scanner(System.`in`).nextLine()
-        notesMenu.add(Notes(noteName, noteText))
+        if (noteName == "") {
+            println("Ошибка: пустой ввод")
+        } else {
+            println("Введите текст")
+
+            val noteText = Scanner(System.`in`).nextLine()
+            if (noteText == "") {
+                println("Ошибка: пустой ввод")
+            } else {
+                notesMenu.add(Notes(noteName, noteText))
+            }
+        }
+
     }
 
     fun menuWorkerNotes() {

@@ -10,8 +10,9 @@ abstract class Menu {
         while (true) {
             print("\nВведите номер пункта: ")
             val choiseInput = Scanner(System.`in`).nextLine()
+
             try {
-                val choise = choiseInput?.toIntOrNull()
+                var choise = choiseInput.toIntOrNull()
                 if (choise != null) {
                     if (choise > maxLength - 1) {
                         println("Ошибка: нет такого пункта меню")
@@ -24,6 +25,7 @@ abstract class Menu {
             } catch (e: Exception) {
                 println("Ошибка: ${e.message}")
             }
+
         }
     }
 
