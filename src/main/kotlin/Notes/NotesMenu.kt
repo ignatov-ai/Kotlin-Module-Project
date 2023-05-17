@@ -11,7 +11,7 @@ class NotesMenu : Menu() {
         Notes("К списку архивов", "")
     )
 
-    fun noteAdd(){
+    fun noteAdd() {
         println("\nВведите название")
         val noteName = Scanner(System.`in`).nextLine()
         println("Введите текст")
@@ -19,17 +19,16 @@ class NotesMenu : Menu() {
         notesMenu.add(Notes(noteName, noteText))
     }
 
-    //
-    fun menuWorkerNotes(){
-        if (notesMenu.size == 0){
+    fun menuWorkerNotes() {
+        if (notesMenu.size == 0) {
             println("Нет заметок")
         }
-        while(true){
+        while (true) {
             ShowMenu(notesMenu)
             //доработна проверка ввода
             val choise = choiseInput(notesMenu.size)
 
-            when(choise){
+            when (choise) {
                 0 -> noteAdd()
                 1 -> return
                 else -> {

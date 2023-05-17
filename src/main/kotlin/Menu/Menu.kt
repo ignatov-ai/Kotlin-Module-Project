@@ -6,17 +6,16 @@ abstract class Menu {
     abstract val menuName: String
 
     //добавит обработчик выхода за границы массива данных
-    fun choiseInput(maxLength: Int): Int{
-        while(true){
+    fun choiseInput(maxLength: Int): Int {
+        while (true) {
             print("\nВведите номер пункта: ")
             val choiseInput = Scanner(System.`in`).nextLine()
             try {
                 val choise = choiseInput?.toIntOrNull()
                 if (choise != null) {
-                    if (choise > maxLength - 1){
+                    if (choise > maxLength - 1) {
                         println("Ошибка: нет такого пункта меню")
-                    }
-                    else {
+                    } else {
                         return choise
                     }
                 } else {
@@ -29,11 +28,11 @@ abstract class Menu {
     }
 
     //Добавил параметризацию для разных типов данных (архивы, заметки)
-    fun <T: linkToString> ShowMenu (menuList: MutableList<T>){
+    fun <T : linkToString> ShowMenu(menuList: MutableList<T>) {
         println(menuName)
 
         //Поменял тип цикла для более удобного вывода данных
-        for(i in 0..menuList.size - 1){
+        for (i in 0..menuList.size - 1) {
             println("$i.) ${menuList[i].textData}")
         }
     }
