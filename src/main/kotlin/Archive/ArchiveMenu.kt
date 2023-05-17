@@ -38,8 +38,7 @@ fun menuWorkerArhives(): MutableList<Notes> {
                 println("\nДо новых встреч!")
                 System.exit(0)
             }
-
-            else -> notesMenu.menuWorkerNotes()
+            else -> notesMenu.menuWorkerNotes(archiveMenu[choise].notesList)
         }
     }
 }

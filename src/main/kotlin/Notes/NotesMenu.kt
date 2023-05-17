@@ -6,12 +6,7 @@ import java.util.Scanner
 class NotesMenu : Menu() {
     override val menuName: String = "\nМеню \"ЗАМЕТКИ\""
 
-    val notesMenu: MutableList<Notes> = mutableListOf(
-        Notes("Создать заметку", ""),
-        Notes("К списку архивов", "")
-    )
-
-    fun noteAdd() {
+    fun noteAdd(notesMenu: MutableList<Notes>) {
         println("\nВведите название")
         val noteName = Scanner(System.`in`).nextLine()
         if (noteName == "") {
@@ -23,15 +18,15 @@ class NotesMenu : Menu() {
             if (noteText == "") {
                 println("Ошибка: пустой ввод")
             } else {
-                notesMenu.add(Notes(noteName, noteText))
+                notesMenu.add(notesMenu.size, Notes(noteName, noteText))
             }
         }
-
     }
 
-    fun menuWorkerNotes() {
+    fun menuWorkerNotes(notesMenu: MutableList<Notes>) {
         if (notesMenu.size == 0) {
-            println("Нет заметок")
+            notesMenu.add(Notes("Создать заметку", ""))
+            notesMenu.add(Notes("К списку архивов", ""))
         }
         while (true) {
             ShowMenu(notesMenu)
@@ -39,7 +34,7 @@ class NotesMenu : Menu() {
             val choise = choiseInput(notesMenu.size)
 
             when (choise) {
-                0 -> noteAdd()
+                0 -> noteAdd(notesMenu)
                 1 -> return
                 else -> {
                     println("\nИмя заметки: ${notesMenu[choise].noteName}")
