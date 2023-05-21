@@ -31,12 +31,17 @@ abstract class Menu {
     }
 
     //Добавил параметризацию для разных типов данных (архивы, заметки)
-    fun <T> ShowMenu (menuList: MutableList<T>){
+    fun <T: linkToString> ShowMenu (menuList: MutableList<T>){
         println(menuName)
 
         //Поменял тип цикла для более удобного вывода данных
         for(i in 0..menuList.size - 1){
-            println("$i.) ${menuList.get(i)}")
+            println("$i.) ${menuList[i].textData}")
         }
     }
+}
+
+//интерфейс для отображения названий пунктов меню в виде строки, а не ссылки
+interface linkToString {
+    val textData: String
 }
