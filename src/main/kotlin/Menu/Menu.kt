@@ -1,7 +1,5 @@
 package Menu
 
-import Archive.Archive
-import Notes.Notes
 import java.util.Scanner
 
 abstract class Menu {
