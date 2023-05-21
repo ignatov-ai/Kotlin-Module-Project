@@ -24,12 +24,13 @@ class ArchiveMenu: Menu() {
     fun menuWorkerArhives(): MutableList<Notes>{
         while(true){
             ShowMenu(archiveMenu)
-            val choise = choiseInput()
+            //доработна проверка ввода
+            val choise = choiseInput(archiveMenu.size)
 
             when(choise){
                 0 -> arhiveAdd()
                 1 -> {
-                    println("До новых встреч!")
+                    println("\nДо новых встреч!")
                     System.exit(0)
                 }
                 else -> notesMenu.menuWorkerNotes()

@@ -26,7 +26,8 @@ class NotesMenu : Menu() {
         }
         while(true){
             ShowMenu(notesMenu)
-            val choise = choiseInput()
+            //доработна проверка ввода
+            val choise = choiseInput(notesMenu.size)
 
             when(choise){
                 0 -> noteAdd()

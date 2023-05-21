@@ -7,14 +7,20 @@ import java.util.Scanner
 abstract class Menu {
     abstract val menuName: String
 
-    fun choiseInput(): Int{
+    //добавит обработчик выхода за границы массива данных
+    fun choiseInput(maxLength: Int): Int{
         while(true){
             print("\nВведите номер пункта: ")
             val choiseInput = Scanner(System.`in`).nextLine()
             try {
                 val choise = choiseInput?.toIntOrNull()
                 if (choise != null) {
-                    return choise
+                    if (choise > maxLength - 1){
+                        println("Ошибка: нет такого пункта меню")
+                    }
+                    else {
+                        return choise
+                    }
                 } else {
                     println("Ошибка: введено не число")
                 }
