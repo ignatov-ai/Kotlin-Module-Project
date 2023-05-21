@@ -1,29 +1,38 @@
 package Archive
 
 import Menu.Menu
+import Notes.Notes
+import Notes.NotesMenu
 import java.util.Scanner
 
 class ArchiveMenu: Menu() {
-    override val menuName: String = "Меню \"АРХИВЫ\""
+    override val menuName: String = "\nМеню \"АРХИВЫ\""
 
     val archiveMenu: MutableList<Archive> = mutableListOf(
-        Archive("Создать архив"),
-        Archive("Выйти"))
+        Archive("Создать архив", mutableListOf()),
+        Archive("Выйти", mutableListOf()))
+
+    val notesMenu = NotesMenu()
 
     fun arhiveAdd(){
         println("Введите название")
         val archiveName = Scanner(System.`in`).nextLine()
-        archiveMenu.add(archiveMenu.size, Archive(archiveName))
+        archiveMenu.add(archiveMenu.size, Archive(archiveName, mutableListOf()))
     }
 
-    fun menuWorker(){
+    //добавил отсылку к списку заметок определенного архива
+    fun menuWorkerArhives(): MutableList<Notes>{
         while(true){
             ShowMenu(archiveMenu)
             val choise = choiseInput()
 
             when(choise){
                 0 -> arhiveAdd()
-                1 -> System.exit(0)
+                1 -> {
+                    println("До новых встреч!")
+                    System.exit(0)
+                }
+                else -> notesMenu.menuWorkerNotes()
             }
         }
     }

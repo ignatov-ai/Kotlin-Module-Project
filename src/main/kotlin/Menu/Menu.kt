@@ -1,6 +1,7 @@
 package Menu
 
 import Archive.Archive
+import Notes.Notes
 import java.util.Scanner
 
 abstract class Menu {
@@ -23,12 +24,13 @@ abstract class Menu {
         }
     }
 
-    fun ShowMenu (menuList: MutableList<Archive>){
+    //Добавил параметризацию для разных типов данных (архивы, заметки)
+    fun <T> ShowMenu (menuList: MutableList<T>){
         println(menuName)
-        var i: Int = 0
-        menuList.forEach{
-            println("$i.) ${it.archiveName}")
-            i++
+
+        //Поменял тип цикла для более удобного вывода данных
+        for(i in 0..menuList.size - 1){
+            println("$i.) ${menuList.get(i)}")
         }
     }
 }
