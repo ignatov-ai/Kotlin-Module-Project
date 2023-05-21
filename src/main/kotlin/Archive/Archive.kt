@@ -1,0 +1,4 @@
+package Archive
+
+class Archive {
+}
