@@ -1,4 +1,4 @@
 package Notes
 
-class Notes {
+class Notes{
 }

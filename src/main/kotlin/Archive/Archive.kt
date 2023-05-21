@@ -1,4 +1,4 @@
 package Archive
 
-class Archive {
-}
+class Archive (
+    val archiveName: String)
